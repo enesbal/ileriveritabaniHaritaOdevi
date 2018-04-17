@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+       #map {
+        height: 400px;
+        width: 600px;
+       }
+       body {
+            background-color:antiquewhite;
+            margin-top:50px;
+                
+       }
+       #icerik{
+           width:80%;
+           margin:auto;
+       }
+       .harita {
+           float:left;
+       }
+       .oylar{
+           float:left;
+           margin-top:50px;
+           margin-left:50px;
+       }
+
+    </style>
+
+      <script src="http://code.jquery.com/jquery.js"></script>
+
+    <script>
+
+        /*function veritabanindanGetir() {
+        <?php
+
+                $con = mysqli_connect("localhost","root","","harita");
+
+            if (mysqli_connect_errno())
+            {
+                echo "MySQL bağlantısı başarısız: " . mysqli_connect_error();
+            }
+
+            $sql = "SET @g1 = Point(40.113549, 26.421580);SELECT p1.park_id as id, MIN(ST_Distance(p1.geography, @g1)) as mesafe from  parklar p1";
+
+
+            $result = $con->query($sql);
+            echo "<a>".$result."</a>";
+            if($result->num_rows > 0){
+
+                while($row = $result->fetch_assoc()){
+                    $json2 = $row["id"];
+                    $json3 = $row["mesafe"];
+                }
+            }else {
+                echo "Hic kayit yok!";
+            }
+
+
+            $json = json_encode($json2);
+            $json4 = json_encode($json3);
+                ?>
+
+            var data = <?php echo $json; ?>;
+            var data2 = <?php echo $json4; ?>;
+
+            console.log(data);
+            parser(data);
+            var polygon = [];
+            //centerPoint={lat: 40.139164, lng: 26.408038},
+            //initMap(centerPoint);
+
+
+        }
+*/
+        function initMap(lati, lngt, park) {
+
+            if(park!=null){
+            var label = document.getElementById('baslik');
+            label.innerHTML=park;
+            }
+
+            if (lati == null && lngt == null) {
+                uluru = { lat: 40.1415605, lng: 26.4217299 };
+            }
+            else{
+                uluru = { lat: lati, lng: lngt };
+            }
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: uluru
+            });
+            var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+            });
+        }
+
+
+        $('#gonder').click(function () {
+            var parkId = 1;
+            
+            $.ajax({
+                type: 'POST',
+                url: 'ajaxPost.php',
+                data: parkId,
+                success:function (cevap) {
+                    $("#sonuc").html(cevap);
+                }
+            })
+        })
+
+    </script>
+
+
+
+
+  </head>
+  <body>
+
+      <script async defer
+              src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArmQVmXsp_OjSxM8V76HSgAszg9biaEYU&callback=initMap">
+      </script>
+      <div id="icerik">
+          
+            <h3>ÇANAKKALE'DEKİ PARKLAR</h3>
+          <div class="harita">
+
+              <div id="map"></div>
+
+
+
+            <button onclick="initMap(40.163168,26.408147,'Ozgurluk Parki')" class="btn btn-primary"> Ozgurluk Parki </button>
+            <button onclick="initMap(40.143063, 26.402541,'Osnabruck Parki')" class="btn btn-primary"> Osnabruck Parki </button>
+            <button onclick="initMap(40.150410, 26.406618,'Halk Bahcesi')" class="btn btn-primary"> Halk Bahcesi </button>
+            <button onclick="initMap(40.151852, 26.404901,'Morabbin Parki')" class="btn btn-primary"> Morabbin Parki </button>
+
+
+          </div>
+            <div class="oylar">
+                <h1 id="baslik">Haritada gormek istediginiz parki seciniz</h1>
+            </div>
+
+          <script>
+
+              <?php
+
+                  $json2="enesdsadasdasdaaaaaaaaaaaa";
+                    $json = json_encode($json2);
+                  ?>
+
+              var data = <?php echo $json; ?>;
+
+              anlikKonum = {lat:40.113549, lng: 26.421580}
+
+          </script>
+
+
+
+
+      </div>
+
+  </body>
+</html>

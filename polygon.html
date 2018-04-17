@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Polygon Arrays</title>
+    <style>
+        /* Always set the map height explicitly to define the size of the div
+         * element that contains the map. */
+        #map {
+            height: 50%;
+            width: 65%;
+            float:left;
+        }
+        body {
+            background-color:antiquewhite;
+            margin-top:50px;
+        }
+        html, body {
+            height: 100%;
+            margin: 30px 50px 60px 80px;
+            padding: 0;
+        }
+        .oylar{
+            float:left;
+            margin-top:50px;
+            margin-left:50px;
+        }
+
+    </style>
+</head>
+<body>
+<script>
+    var polygon = [];
+    var map;
+    var infoWindow;
+
+    function veritabanindanGetir17() {
+    <?php
+
+            $con = mysqli_connect("localhost","root","","harita");
+
+        if (mysqli_connect_errno())
+        {
+            echo "MySQL bağlantısı başarısız: " . mysqli_connect_error();
+        }
+
+        $sql ="SELECT il_plaka_kodu, il_adi, asText(polygon) as polygon FROM il WHERE il_plaka_kodu=17";
+
+        $result = $con->query($sql);
+
+        if($result->num_rows > 0){
+
+            while($row = $result->fetch_assoc()){
+                $jsonicin = "{\"".$row["il_plaka_kodu"].",\"".$row["polygon"]."\"";
+                $json2 = $row["polygon"];
+            }
+        }else {
+            echo "Hic kayit yok!";
+        }
+
+
+        $json = json_encode($json2);
+
+            ?>
+
+        var data = <?php echo $json; ?>;
+        var polygon = [];
+
+        parser(data);
+        var polygon = [];
+        centerPoint = {lat: 40.0549886, lng : 26.9278292}
+        initMap(centerPoint);
+
+
+        //oy oranlari
+        document.getElementById("oyBaslik").innerHTML="Canakkale'de Oy Oranları"
+        document.getElementById("aParti").innerHTML="A partisi: 55%"
+        document.getElementById("bParti").innerHTML="B partisi: 25%"
+        document.getElementById("cParti").innerHTML="C partisi: 20%"
+
+    }
+    function veritabanindanGetir34() {
+    <?php
+
+            $con = mysqli_connect("localhost","root","","harita");
+
+        if (mysqli_connect_errno())
+        {
+            echo "MySQL bağlantısı başarısız: " . mysqli_connect_error();
+        }
+
+        $sql ="SELECT il_plaka_kodu, il_adi, asText(polygon) as polygon FROM il WHERE il_plaka_kodu=34";
+
+        $result = $con->query($sql);
+
+        if($result->num_rows > 0){
+
+            while($row = $result->fetch_assoc()){
+                $jsonicin = "{\"".$row["il_plaka_kodu"].",\"".$row["polygon"]."\"";
+                $json2 = $row["polygon"];
+            }
+        }else {
+            echo "Hic kayit yok!";
+        }
+
+
+        $json = json_encode($json2);
+
+            ?>
+
+        var data = <?php echo $json; ?>;
+        var polygon = [];
+
+        parser(data);
+        var polygon = [];
+        centerPoint = {lat: 41.0766019, lng : 29.052495}
+        initMap(centerPoint);
+
+
+
+        //oy oranlari
+        document.getElementById("oyBaslik").innerHTML="Istanbul'da Oy Oranları"
+        document.getElementById("aParti").innerHTML="A partisi: 35%"
+        document.getElementById("bParti").innerHTML="B partisi: 55%"
+        document.getElementById("cParti").innerHTML="C partisi: 10%"
+    }
+    function veritabanindanGetir35() {
+        var polygon = [];
+
+    <?php
+
+            $con = mysqli_connect("localhost","root","","harita");
+
+        if (mysqli_connect_errno())
+        {
+            echo "MySQL bağlantısı başarısız: " . mysqli_connect_error();
+        }
+
+        $sql ="SELECT il_plaka_kodu, il_adi, asText(polygon) as polygon FROM il WHERE il_plaka_kodu=35";
+
+        $result = $con->query($sql);
+
+        if($result->num_rows > 0){
+
+            while($row = $result->fetch_assoc()){
+                $jsonicin = "{\"".$row["il_plaka_kodu"].",\"".$row["polygon"]."\"";
+                $json2 = $row["polygon"];
+            }
+        }else {
+            echo "Hic kayit yok!";
+        }
+
+
+        $json = json_encode($json2);
+
+            ?>
+
+        var data = <?php echo $json; ?>;
+        var polygon = [];
+
+        parser(data);
+        var polygon = [];
+        centerPoint = {lat: 38.23166, lng : 27.02997};
+        initMap(centerPoint);
+
+
+
+        //oy oranlari
+        document.getElementById("oyBaslik").innerHTML="Izmır'de Oy Oranları"
+        document.getElementById("aParti").innerHTML="A partisi: 35%"
+        document.getElementById("bParti").innerHTML="B partisi: 45%"
+        document.getElementById("cParti").innerHTML="C partisi: 20%"
+    }
+    function veritabanindanGetir06() {
+        var polygon = [];
+
+    <?php
+
+            $con = mysqli_connect("localhost","root","","harita");
+
+        if (mysqli_connect_errno())
+        {
+            echo "MySQL bağlantısı başarısız: " . mysqli_connect_error();
+        }
+
+        $sql ="SELECT il_plaka_kodu, il_adi, asText(polygon) as polygon FROM il WHERE il_plaka_kodu=6";
+
+        $result = $con->query($sql);
+
+        if($result->num_rows > 0){
+
+            while($row = $result->fetch_assoc()){
+                $jsonicin = "{\"".$row["il_plaka_kodu"].",\"".$row["polygon"]."\"";
+                $json2 = $row["polygon"];
+            }
+        }else {
+            echo "Hic kayit yok!";
+        }
+
+
+        $json = json_encode($json2);
+
+            ?>
+
+        var data = <?php echo $json; ?>;
+        var polygon = [];
+
+        parser(data);
+        var polygon = [];
+        centerPoint = {lat: 39.7160439, lng : 32.7059948};
+        initMap(centerPoint);
+
+
+        //oy oranlari
+        document.getElementById("oyBaslik").innerHTML="Ankara'da Oy Oranları"
+        document.getElementById("aParti").innerHTML="A partisi: 5%"
+        document.getElementById("bParti").innerHTML="B partisi: 55%"
+        document.getElementById("cParti").innerHTML="C partisi: 40%"
+    }
+
+
+    function parser(data) {
+        var yeni = data.slice(15,data.length-3).split(",");
+        var latVeLong;
+
+        for(i=0; i< yeni.length ; i++){
+            var latVeLong= yeni[i].split(" ");
+            polygon.push({
+                lat:parseFloat(latVeLong[1]),
+                lng:parseFloat(latVeLong[0])
+            });
+        }
+
+    }
+
+
+    function initMap(centerPoint) {
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 8,
+            center: {lat: 40.0549886, lng : 26.9278292},
+            center: centerPoint
+
+        });
+
+        // Construct the polygon.
+        var bermudaTriangle = new google.maps.Polygon({
+            paths: polygon  ,
+            strokeColor: '#60a2ff',
+            strokeOpacity: 0.5,
+            strokeWeight: 2,
+            fillColor: '#ff8b0c',
+            fillOpacity: 0.2
+        });
+        bermudaTriangle.setMap(map);
+
+        infoWindow = new google.maps.InfoWindow;
+    }
+
+    /** @this {google.maps.Polygon} */
+    function showArrays(event) {
+        // Since this polygon has only one path, we can call getPath() to return the
+        // MVCArray of LatLngs.
+        var vertices = this.getPath();
+
+        var contentString = '<b>Bermuda Triangle polygon</b><br>' +
+            'Clicked location: <br>' + event.latLng.lat() + ',' + event.latLng.lng() +
+            '<br>';
+
+        // Iterate over the vertices.
+        for (var i =0; i < vertices.getLength(); i++) {
+            var xy = vertices.getAt(i);
+            contentString += '<br>' + 'Coordinate ' + i + ':<br>' + xy.lat() + ',' +
+                xy.lng();
+        }
+
+        // Replace the info window's content and position.
+        infoWindow.setContent(contentString);
+        infoWindow.setPosition(event.latLng);
+
+        infoWindow.open(map);
+    }
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArmQVmXsp_OjSxM8V76HSgAszg9biaEYU&callback=initMap">
+</script>
+
+<h3>SEÇİM SONUÇLARI</h3>
+
+<div id="map"></div>
+
+<button id="gonder" onclick="veritabanindanGetir17()" class="btn btn-primary"> CANAKKALE </button>
+<button id="gonder2" onclick="veritabanindanGetir34()" class="btn btn-primary"> ISTANBUL </button>
+<button id="gonder3" onclick="veritabanindanGetir35()" class="btn btn-primary"> IZMIR </button>
+<button id="gonder4" onclick="veritabanindanGetir06()" class="btn btn-primary"> ANKARA </button>
+
+
+<div class="oylar">
+    <h1 id="oyBaslik">Oy Oranlarini Gormek Istediginiz Ili Seciniz</h1>
+    <h3 id="aParti">A partisi: --%</h3>
+    <h3 id="bParti">B partisi: --%</h3>
+    <h3 id="cParti">C partisi: --%</h3>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Simple Polylines</title>
+    <style>
+
+        #map {
+            height: 60%;
+            width: 75%;
+            float:left;
+        }
+        html, body {
+            height: 100%;
+            margin: 30px 50px 60px 80px;
+            padding: 0;
+        }
+        body {
+            background-color:antiquewhite;
+            margin-top:50px;
+        }
+    </style>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyArmQVmXsp_OjSxM8V76HSgAszg9biaEYU&callback=initMap">
+    </script>
+    <script>
+        var polygon = [];
+        var data;
+        function initMap(centerpoint) {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: centerpoint,
+            });
+            var flightPath = new google.maps.Polyline({
+                path: polygon,
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+            });
+
+            flightPath.setMap(map);
+        }
+
+        function veritabanindanGetir1() {
+        <?php
+
+                $con = mysqli_connect("localhost","root","","harita");
+
+            if (mysqli_connect_errno())
+            {
+                echo "MySQL bağlantısı başarısız: " . mysqli_connect_error();
+            }
+
+            $sql ="SELECT cadde_id, asText(line) as line FROM caddeler WHERE cadde_id=1";
+
+            $result = $con->query($sql);
+
+            if($result->num_rows > 0){
+
+                while($row = $result->fetch_assoc()){
+                    $json2 = $row["line"];
+                }
+            }else {
+                echo "Hic kayit yok!";
+            }
+
+
+            $json = json_encode($json2);
+
+                ?>
+
+            var data = <?php echo $json; ?>;
+            console.log(data);
+            parser(data);
+            var polygon = [];
+            centerPoint={lat: 40.139164, lng: 26.408038},
+            initMap(centerPoint);
+
+
+            //oy oranlari
+            document.getElementById("oyBaslik").innerHTML="Canakkale'de Oy Oranları"
+            document.getElementById("aParti").innerHTML="A partisi: 55%"
+            document.getElementById("bParti").innerHTML="B partisi: 25%"
+            document.getElementById("cParti").innerHTML="C partisi: 20%"
+
+        }
+        function veritabanindanGetir2() {
+        <?php
+
+                $con = mysqli_connect("localhost","root","","harita");
+
+            if (mysqli_connect_errno())
+            {
+                echo "MySQL bağlantısı başarısız: " . mysqli_connect_error();
+            }
+
+            $sql ="SELECT cadde_id, asText(line) as line FROM caddeler WHERE cadde_id=2";
+
+            $result = $con->query($sql);
+
+            if($result->num_rows > 0){
+
+                while($row = $result->fetch_assoc()){
+                    $json2 = $row["line"];
+                }
+            }else {
+                echo "Hic kayit yok!";
+            }
+
+
+            $json = json_encode($json2);
+
+                ?>
+
+            var data = <?php echo $json; ?>;
+            console.log(data);
+            parser(data);
+            var polygon = [];
+            centerPoint={lat: 40.139164, lng: 26.408038},
+                initMap(centerPoint);
+
+
+            //oy oranlari
+            document.getElementById("oyBaslik").innerHTML="Canakkale'de Oy Oranları"
+            document.getElementById("aParti").innerHTML="A partisi: 55%"
+            document.getElementById("bParti").innerHTML="B partisi: 25%"
+            document.getElementById("cParti").innerHTML="C partisi: 20%"
+
+        }
+        function veritabanindanGetir3() {
+        <?php
+
+                $con = mysqli_connect("localhost","root","","harita");
+
+            if (mysqli_connect_errno())
+            {
+                echo "MySQL bağlantısı başarısız: " . mysqli_connect_error();
+            }
+
+            $sql ="SELECT cadde_id, asText(line) as line FROM caddeler WHERE cadde_id=3";
+
+            $result = $con->query($sql);
+
+            if($result->num_rows > 0){
+
+                while($row = $result->fetch_assoc()){
+                    $json2 = $row["line"];
+                }
+            }else {
+                echo "Hic kayit yok!";
+            }
+
+
+            $json = json_encode($json2);
+
+                ?>
+
+            var data = <?php echo $json; ?>;
+            console.log(data);
+            parser(data);
+            var polygon = [];
+            centerPoint={lat: 40.139164, lng: 26.408038},
+                initMap(centerPoint);
+
+
+            //oy oranlari
+            document.getElementById("oyBaslik").innerHTML="Canakkale'de Oy Oranları"
+            document.getElementById("aParti").innerHTML="A partisi: 55%"
+            document.getElementById("bParti").innerHTML="B partisi: 25%"
+            document.getElementById("cParti").innerHTML="C partisi: 20%"
+
+        }
+        function veritabanindanGetir4() {
+        <?php
+
+                $con = mysqli_connect("localhost","root","","harita");
+
+            if (mysqli_connect_errno())
+            {
+                echo "MySQL bağlantısı başarısız: " . mysqli_connect_error();
+            }
+
+            $sql ="SELECT cadde_id, asText(line) as line FROM caddeler WHERE cadde_id=4";
+
+            $result = $con->query($sql);
+
+            if($result->num_rows > 0){
+
+                while($row = $result->fetch_assoc()){
+                    $json2 = $row["line"];
+                }
+            }else {
+                echo "Hic kayit yok!";
+            }
+
+
+            $json = json_encode($json2);
+
+                ?>
+
+            var data = <?php echo $json; ?>;
+            console.log(data);
+            parser(data);
+            var polygon = [];
+            centerPoint={lat: 40.139164, lng: 26.408038},
+                initMap(centerPoint);
+
+
+            //oy oranlari
+            document.getElementById("oyBaslik").innerHTML="Canakkale'de Oy Oranları"
+            document.getElementById("aParti").innerHTML="A partisi: 55%"
+            document.getElementById("bParti").innerHTML="B partisi: 25%"
+            document.getElementById("cParti").innerHTML="C partisi: 20%"
+
+        }
+        function parser(data) {
+            var yeni = data.slice(11,data.length-1).split(",");
+            var latVeLong;
+
+            for(i=0; i< yeni.length ; i++){
+                var latVeLong= yeni[i].split(" ");
+                polygon.push({
+                    lat:parseFloat(latVeLong[0]),
+                    lng:parseFloat(latVeLong[1])
+                });
+            }
+
+        }
+    </script>
+
+
+</head>
+<body>
+<h3>ÇANAKKALE'DEKİ CADDELER</h3>
+<div id="map"></div>
+
+<button id="gonder" onclick="veritabanindanGetir1()" class="btn btn-primary"> ATATURK CADDESI </button>
+<button id="gonder2" onclick="veritabanindanGetir2()" class="btn btn-primary"> TROYA CADDESI </button>
+<button id="gonder3" onclick="veritabanindanGetir3()" class="btn btn-primary"> INONU CADDESI </button>
+<button id="gonder4" onclick="veritabanindanGetir4()" class="btn btn-primary"> 100. YIL CADDESI </button>
+</body>
+</html>
